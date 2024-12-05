@@ -13,17 +13,13 @@ def dashboard(request):
     applications = JobApplication.objects.all()
     return render(request, 'dashboard.html', {'applications': applications})
 
-# def application_detail(request, id):
-#     application = get_object_or_404(JobApplication, id=id)
-#     return render(request, 'application_detail.html', {'application': application})
-
 def application_detail(request, id):
     application = get_object_or_404(JobApplication, id=id)
     return render(request, 'application_detail.html', {'application': application})
 
 def create_application(request):
     if request.method == 'POST':
-        form = JobApplicationForm(request.POST)
+        form = JobApplicationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('dashboard')

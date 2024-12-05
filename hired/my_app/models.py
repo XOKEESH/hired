@@ -1,13 +1,12 @@
 from django.db import models
 
-# Create your models here.
 class JobApplication(models.Model):
     job_title = models.CharField(max_length=200)
     company_name = models.CharField(max_length=200)
     application_date = models.DateField(auto_now_add=True)
 
     PENDING = 'Pending'
-    ACCEPTED = 'Accepted'
+    APPLIED = 'Applied'
     INTERVIEWING = 'Interviewing'
     REJECTED = 'Rejected'
     OFFER_ACCEPTED = 'Offer Accepted'
@@ -15,7 +14,7 @@ class JobApplication(models.Model):
 
     STATUS_CHOICES = [
         (PENDING, 'Pending'),
-        (ACCEPTED, 'Accepted'),
+        (APPLIED, 'Applied'),
         (INTERVIEWING, 'Interviewing'),
         (REJECTED, 'Rejected'),
         (OFFER_ACCEPTED, 'Offer Accepted'),

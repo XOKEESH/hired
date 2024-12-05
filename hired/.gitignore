@@ -1,0 +1,20 @@
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore environment settings
+.env
+
+# Ignore static and media files (generated or uploaded content)
+staticfiles/
+media/
+
+# Ignore database files (if you're using SQLite locally)
+db.sqlite3
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore macOS-specific files
+.DS_Store

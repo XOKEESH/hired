@@ -1,11 +1,29 @@
-{% extends 'home.html' %} 
+{% extends 'base.html' %}
+
+{% block title %}Application Detail - Job Tracker{% endblock %}
 
 {% block content %}
-<h1>Job Title & Company</h1>
-<h4>Status: </h4>
-<p class="page-content">
-    A long list of the jobs you're tracking will show up here. Good luck on your search!
-  </p>
-<hr />
+<h2>{{ application.job_title }} - {{ application.company_name }}</h2>
 
+<p><strong>Status:</strong> {{ application.status }}</p>
+<p><strong>Application Date:</strong> {{ application.application_date }}</p>
+<p><strong>Job Description:</strong></p>
+<pre>{{ application.job_description }}</pre>
+<p><strong>Notes:</strong> {{ application.notes }}</p>
+
+{% if application.job_link %}
+  <p><a href="{{ application.job_link }}" target="_blank">Job Listing</a></p>
+{% endif %}
+
+{% if application.attachments %}
+  <p>Attachments: <a href="{{ application.attachments.url }}">Download</a></p>
+{% else %}
+<p>No attachments available.</p>
+{% endif %} 
+
+<!-- Add actions like edit or delete -->
+<a href="{% url 'update' application.id %}">Edit</a> | 
+<a href="{% url 'delete' application.id %}">Delete</a>
+<a href="{% url 'dashboard' %}">Back to Dashboard</a>
 {% endblock %}
+

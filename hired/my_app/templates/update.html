@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Application - Job Tracker{% endblock %}
+
+{% block content %}
+<h2>Update Job Application</h2>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}  <!-- Render the form fields with existing values -->
+
+  <button type="submit">Update Application</button>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}About - Job Tracker{% endblock %}
+
+{% block content %}
+<h2>About the Job Tracker</h2>
+<p>This app helps you track all your job applications in one place. You can easily manage the status of each application and keep track of important details.</p>
+
+<!-- Call-to-action to create a new job application -->
+<a href="{% url 'create' %}">Add New Job Application</a>
+{% endblock %}

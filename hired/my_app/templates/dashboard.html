@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Job Tracker{% endblock %}
+
+{% block content %}
+<h2>Your Job Applications</h2>
+<p>Here's a list of all the job applications you're currently tracking. You can view details, update, or delete any of them.</p>
+
+<!-- Here you'll dynamically list all job applications from the database -->
+<ul>
+  {% for application in applications %}
+    <li>
+      <a href="{% url 'application_detail' application.id %}">{{ application.job_title }} - {{ application.company_name }}</a>
+      <span>Status: {{ application.status }}</span>
+      <a href="{% url 'update' application.id %}">Edit</a> | 
+      <a href="{% url 'delete' application.id %}">Delete</a>
+    </li>
+    {% empty %}
+      <p>You are not tracking any applications yet.</p>
+  {% endfor %}
+</ul>
+{% endblock %}
+

@@ -7,7 +7,7 @@
 <p>Here's a list of all the job applications you're currently tracking. You can view details, update, or delete any of them.</p>
 
 <ul>
-  {% for application in applications %}
+  {% for application in job_applications %}
     <li>
       <a href="{% url 'application_detail' application.id %}">{{ application.job_title }} - {{ application.company_name }}</a>
       <span>Status: {{ application.status }}</span>

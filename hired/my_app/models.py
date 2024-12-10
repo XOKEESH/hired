@@ -1,6 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class JobApplication(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     job_title = models.CharField(max_length=200)
     company_name = models.CharField(max_length=200)
     application_date = models.DateField(auto_now_add=True)

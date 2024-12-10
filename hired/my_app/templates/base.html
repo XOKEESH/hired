@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Job Tracker{% endblock %}</title>
+    <title>{% block title %}Hired{% endblock %}</title>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'create' %}">Add an Application</a></li>
                 <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                <li><a href="{% url 'create' %}">Add Application</a></li>
+                <li>
+                    <form id="logout-form" method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Log out</button>
+                    </form>
+                </li>
+                {% else %}
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'home' %}">Log In</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
@@ -23,7 +33,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Job Tracker</p>
+        <p>&copy; 2024 Hired</p>
     </footer>
 </body>
 </html>

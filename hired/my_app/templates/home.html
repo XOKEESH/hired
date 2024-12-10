@@ -5,5 +5,15 @@
 {% block content %}
 <h2>Welcome to Your Job Tracker</h2>
 <p>Keep track of your job applications in one place.</p>
-<a href="{% url 'sign_in' %}">Sign In</a> | <a href="{% url 'sign_up' %}">Sign Up</a>
+{% if not user.is_authenticated %}
+<section>
+    <form action="{% url 'home' %}" method="post" class="login">
+      <h1>Login</h1>
+      {% csrf_token %} 
+      {{ form.as_p }}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <button type="submit" class="btn submit">Login</button>
+    </form>
+  </section>  
+{% endif %}
 {% endblock %}
